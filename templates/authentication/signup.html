@@ -5,8 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style type="text/css">
+        th {
+            border: 3px solid black; 
+            padding: 10px; 
+            text-align: center; 
+            background-color: #D3D3D8;
+          }
+        table {
+            width: 1000px;
+            /* height: 20px;  */
+            margin: 0 auto; 
+            /* border-collapse: collapse;  */
+          }
+        .brand{
+            background: green !important;
+            align: right;
+        }
+        td {
+            border: 1px solid black; 
+            padding: 5px; 
+            text-align: left; 
+            background-color: white;
+          }
+          form{
+            max-width: 460px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+    </style>
 </head>
-<body>
+<body class = "grey lighten-4">
     {% for message in messages%}
     <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
         <strong>Message: </strong> {{message}}
@@ -15,22 +46,22 @@
         </button>
     </div>
     {% endfor %}
-    <h3>Let's include you in our database for the first time</h3>
-    <form action="/signup" method="post">
+    <h4>Let's include you in our database for the first time</h4>
+    <form action="/signup" class = "white" method="post">
         {% csrf_token %}
-            <label for="">Username: </label>
+            <label for=""><h5>Username: </h5></label>
             <input type="text" id="username" name="username" placeholder="Create a User (Only letters and numbers)" required>
             <br>
-            <label for="">Email: </label>
+            <label for=""><h5>Email: </h5></label>
             <input type="email" id="email" name="email" placeholder="Type your email" required>
             <br>
-            <label for="">password: </label>
+            <label for=""><h5>Password: </h5></label>
             <input type="password" id="pass1" name="pass1" placeholder="Type your password" required>
             <br>
-            <label for="">password: </label>
-            <input type="password" id="pass2" name="pass2" placeholder="COnfirm your password" required>
+            <label for=""><h5>Password: </h5></label>
+            <input type="password" id="pass2" name="pass2" placeholder="Confirm your password" required>
             <br>
-            <button type="submit">Sign Up!</button>
+            <button type="submit" class = "btn brand z-depth-0 center">Sign Up!</button>
     </form>
 </body>
 </html>

@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        form{
+            max-width: 460px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+    </style>
 </head>
-<body>
+<body class="grey lighten-4">
     {% for message in messages%}
     <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
         <strong>Message: </strong> {{message}}
@@ -15,23 +23,31 @@
     </div>
     {% endfor %}
 
-    <h3>Welcome Back!</h3>
-
-    <form action="/signin" method="post">
-        {% csrf_token %}
-            <label for="">Username: </label>
-            <input type="text" id="username" name="username" placeholder="Enter Username (Only letters and numbers)" required>
-            <br>
-            <label for="">password: </label>
-            <input type="password" id="pass1" name="pass1" placeholder="Type your password" required>
-            <br>
-            <button type="submit">Sign in!</button>
+            <nav class="white z-depth-0">
+            <div class="container" style="color: black; "><h3>Welcome and Sign In</h3></div>
+            </nav>
+        <section class="container grey-text">
+            <h4 class "center">Please fill in Your details</h4>
+            <form action="/signin" class = "white" method="post">
+                {% csrf_token %}
+                <label for="" style="color: black;"><h5>Username: </h5></label>
+                <input type="text" id="username" name="username" placeholder="Enter Username (Only letters and numbers)" required>
+                <br>
+                <label for="" style="color: black;"><h5>Password: </h5></label>
+                <input type="password" id="pass1" name="pass1" placeholder="Type your password" required>
+                <br>
+                <div class="center">
+                <button type="submit" class = "btn brand z-depth-0">Sign in!</button>
+                </div>
             
-    </form>
+            </form>
     <hr>
+    <div class="center">
+    <h5>OR</h5>
     <form action="/google" method="post">
         {% csrf_token %}
-        <button style= "background-color: aqua; border = 2px solid black;"> Sign in with Google</button>
+        <button style= "background-color: aqua; border = 2px solid black;" class = "btn brand z-depth-0 center"> Sign in with Google</button>
     </form>
+</div>
 </body>
 </html>

@@ -5,8 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style type="text/css">
+        th {
+            border: 3px solid black; 
+            padding: 10px; 
+            text-align: center; 
+            background-color: #D3D3D8;
+          }
+        table {
+            width: 1000px;
+            /* height: 20px;  */
+            margin: 0 auto; 
+            /* border-collapse: collapse;  */
+          }
+        .brand{
+            background: green !important;
+            align: right;
+        }
+        td {
+            border: 1px solid black; 
+            padding: 5px; 
+            text-align: left; 
+            background-color: white;
+          }
+          form{
+            max-width: 460px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+    </style>
 </head>
-<body>
+<body class = "grey lighten-4">
     {% for message in messages%}
     <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
         <strong>Message: </strong> {{message}}
@@ -15,12 +46,13 @@
         </button>
     </div>
     {% endfor %}
-
-    <h3>Welcome to Geeks for Geeks</h3>
+    <nav class="white z-depth-0">
+<div class="container" style="color: black;"><h3>Welcome to Book Repository</h3></div>
+    </nav>
     
     {% if user.is_authenticated %}
-        <h3>Hello {{username}}</h3>
-        <h4>Your are successfully logged in </h4>
+        <h5>Hello {{username}}</h5>
+        <h5>Your are successfully logged in </h5>
         <h4 align="center">Here are the notes uploaded by the admin</h4>
         <hr>
         <div class="container">
@@ -48,11 +80,14 @@
             </table>
         </div>
         <hr>
-        <button type=" submit"> <a href="/signout">signout</a></button>
+        <button type=" submit" class = "btn brand z-depth-0"> <a href="/signout" >signout</a></button>
 
     {% else %}
-    <button type=" submit"> <a href="/signup">signup</a></button>
-    <button type=" submit"> <a href="/signin">signin</a></button>
+    
+    <button type=" submit" class = "btn brand z-depth-0"> <a href="/signup" class ="btn brand z-depth-0">signup</a></button>
+    <button type=" submit" class = "btn brand z-depth-0"> <a href="/signin" class ="btn brand z-depth-0">signin</a></button>
+
+
     {% endif %}
 </body>
 </html>
