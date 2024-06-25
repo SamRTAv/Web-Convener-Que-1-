@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book Drive</title>
+</head>
+<body>
+    {% for message in messages%}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong> {{message}}
+        <button type="button" class="close" data-dismiss = "alert" aria-label="close">
+        <span aria-hidden = "true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    {% comment %} <div class="container">
+        <h2 align="center">Grow your Repository of Notes!</h2>
+        <hr>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="class-md-6">
+                    <form action="/bookDrive" method = "post" enctype = "multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label> Name </label>
+                            <input type="text" class="name" name = "name">
+                        </div>
+                        <div class="form-group">
+                            <label for=""> Description: </label>
+                            <input type="text" id= "description" name = "description">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Notes File: </label>
+                            <input type="file" id="file" name = "file">
+                        </div>
+                        <button>submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div> {% endcomment %}
+    <hr>
+    <h3 align="center">Hello {{username}}</h3>
+        <h4>Your are successfully logged in </h4>
+        <h4 align="center">Here are the notes uploaded by the Admins</h4>
+        <hr>
+        <div class="container1">
+            <table class="table" id="mytable" border="2px solid black">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Name</th>
+                        <th>Uploading Date</th>
+                        <th>Description</th>
+                        <th>Download Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for note in notes%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{note.Name}}</td>
+                        <td align="center">{{note.uploadingdate}}</td>
+                        <td>{{note.Description}}</td>
+                        <td><a href="{{note.File.url}}" download> Download Now</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div class="upload">
+            <h4>Want to add more to this repository?</h4>
+            <button type="submit" ><a href="/upload">Upload</a></button>
+        </div>
+        <hr>
+        <button type=" submit"> <a href="/signout">signout</a></button>
+</body>
+</html>

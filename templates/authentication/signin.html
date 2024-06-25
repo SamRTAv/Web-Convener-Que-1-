@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+</head>
+<body>
+    {% for message in messages%}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong> {{message}}
+        <button type="button" class="close" data-dismiss = "alert" aria-label="close">
+        <span aria-hidden = "true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <h3>Welcome Back!</h3>
+
+    <form action="/signin" method="post">
+        {% csrf_token %}
+            <label for="">Username: </label>
+            <input type="text" id="username" name="username" placeholder="Enter Username (Only letters and numbers)" required>
+            <br>
+            <label for="">password: </label>
+            <input type="password" id="pass1" name="pass1" placeholder="Type your password" required>
+            <br>
+            <button type="submit">Sign in!</button>
+            
+    </form>
+    <hr>
+    <form action="/google" method="post">
+        {% csrf_token %}
+        <button style= "background-color: aqua; border = 2px solid black;"> Sign in with Google</button>
+    </form>
+</body>
+</html>

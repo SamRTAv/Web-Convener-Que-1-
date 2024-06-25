@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is it coming</title>
+</head>
+<body>
+    Want to view the file?
+    Here it is...
+    <h3>Welcome to Geeks for Geeks</h3>
+    
+    {% if user.is_authenticated %}
+        <h3>Hello {{user.username}}</h3>
+        <h4>Your are successfully logged in </h4>
+        <h4 align="center">Here are the notes uploaded by the admin</h4>
+        <hr>
+        <div class="container">
+            <table class="table" id="mytable" border="2px solid black">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Name</th>
+                        <th>Uploading Date</th>
+                        <th>Description</th>
+                        <th>Download Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for note in notes%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{note.Name}}</td>
+                        <td align="center">{{note.uploadingdate}}</td>
+                        <td>{{note.Description}}</td>
+                        <td><a href="{{note.File.url}}" download> Download Now</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <button type=" submit"> <a href="{% url 'socialaccount_logout' %}">LOGOUT</a></button>
+        {% else %}
+        <button type=" submit"> <a href="/signup">signup</a></button>
+        <button type=" submit"> <a href="/signin">signin</a></button>
+        {% endif %}
+</body>
+</html>
