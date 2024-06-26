@@ -1,6 +1,6 @@
 # Web-Convener-Que-1-
 All my work is present in the master branch and not in main. Please check it  
-I had installed the following files when i was working through the assignment  
+I had installed the following files using pip install when i was working through the assignment  
 Django  
 django-allauth  
 pillow  
