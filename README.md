@@ -9,4 +9,5 @@ six
 social-auth-app-django 5.4.1  
 social-auth-core  
 xhtml2pdf  
-Though I have not used all of them but when i was working tried multiple things and then used the one which best suited
+Though I have not used all of them but when i was working tried multiple things and then used the one which best suited  
+Also I have used materialize css and the link is there in the html head tag in the templates
